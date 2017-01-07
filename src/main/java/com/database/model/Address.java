@@ -1,12 +1,22 @@
 package com.database.model;
 
+import javax.persistence.*;
+
 /**
  * Created by miras108 on 2016-12-17.
  */
+@Entity
 public class Address {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     private String street;
+
+    @Enumerated(EnumType.STRING)
     private DistrictEnum district;
+
+    @Enumerated(EnumType.STRING)
     private TaxOffice taxOffice;
 
     public Integer getId() {

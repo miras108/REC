@@ -1,4 +1,4 @@
-package com.web.crowler;
+package com.database.model;
 
 /**
  * Created by miras108 on 2016-11-27.

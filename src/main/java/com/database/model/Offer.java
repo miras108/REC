@@ -1,11 +1,17 @@
-package com.web.crowler;
+package com.database.model;
 
-import com.database.model.Address;
+import javax.persistence.*;
 
 /**
  * Created by miras108 on 2016-11-27.
  */
+@Entity
 public class Offer {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
     private String url;
     private String rawAddress;
     private double price;
@@ -14,9 +20,19 @@ public class Offer {
     private short numberOfRooms;
     private short floor;
     private short maxFloor;
+
+    @Enumerated(EnumType.STRING)
     private Market market;
     private int yearOfConstruction;
     private Address address;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public String getUrl() {
         return url;

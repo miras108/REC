@@ -3,12 +3,16 @@ package com.web.crowler;
 import com.database.loader.AddressLoader;
 import com.database.model.Address;
 import com.database.model.DistrictEnum;
+import com.database.model.Market;
+import com.database.model.Offer;
 import org.apache.commons.lang3.StringUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.nodes.TextNode;
 import org.jsoup.select.Elements;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.io.IOException;
 import java.util.*;
@@ -23,6 +27,9 @@ public class Crawler {
     private static List<Address> addresses;
 
     public static void main(String[] args) throws IOException {
+
+        initSpringContext();
+
         if (args.length != 1) {
             throw new InputMismatchException("Invalid parameters, please provide source file patch");
         }
@@ -77,6 +84,11 @@ public class Crawler {
 
         Arrays.asList(offers).forEach(offer -> System.out.println(offer));
 
+    }
+
+    private static void initSpringContext() {
+
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("/application-context.xml");
     }
 
     private static Offer parseOffer(String offerUrl) throws IOException {
