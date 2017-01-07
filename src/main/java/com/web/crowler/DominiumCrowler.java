@@ -56,7 +56,7 @@ public class DominiumCrowler {
 
         System.out.println("All offers count: " + allOffersUrls.size());
 
-        List<DominiumOffer> offers = allOffersUrls.stream()
+        List<DominiumOffer> offers = allOffersUrls.parallelStream()
                 .map(url -> getOffer(url))
                 .filter(offer -> offer != null)
                 .collect(toList());
@@ -81,7 +81,7 @@ public class DominiumCrowler {
     private static Set<String> retrieveOffersUrls(Set<String> allInvestmentsURL) {
         Set<String> allOffersUrls = new HashSet<>();
 
-        allInvestmentsURL.stream()
+        allInvestmentsURL.parallelStream()
                 .forEach(investment -> allOffersUrls.addAll(retriveOffersUrlForInvestment(investment)));
 
         return allOffersUrls;
