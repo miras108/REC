@@ -24,9 +24,18 @@
         <property name="hibernateProperties">
             <props>
                 <prop key="dialect">org.hibernate.dialect.PostgreSQLDialect</prop>
-                <prop key="hibernate.hbm2ddl.auto">create-drop</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
             </props>
         </property>
+    </bean>
+
+    <bean id="domminiumOfferCriteria" class="com.database.criteria.DominiumOfferCriteria">
+        <constructor-arg ref="sessionFactory"/>
+    </bean>
+
+    <bean id="domminiumOfferDao" class="com.database.dao.DominiumOfferDao">
+        <constructor-arg ref="sessionFactory"/>
+        <constructor-arg ref="domminiumOfferCriteria"/>
     </bean>
 </beans>
 

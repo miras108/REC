@@ -5,7 +5,6 @@ import javax.persistence.*;
 /**
  * Created by miras108 on 2016-11-27.
  */
-@Entity
 public class Offer {
 
     @Id
